@@ -415,7 +415,9 @@ to it is returned.  This function does not modify the point or the mark."
 	   (zmacs-activate-region)
 	 (zmacs-deactivate-region))
     ;; Emacs.
-    `(setq mark-active ,activate)))
+    `(if ,activate
+         (activate-mark)
+       (deactivate-mark))))
 
 (defmacro c-set-keymap-parent (map parent)
   (cond
